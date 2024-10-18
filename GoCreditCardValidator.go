@@ -34,7 +34,7 @@ func validateHandler(w http.ResponseWriter, r *http.Request){
   isValid := luhnAlgorithm(request.CardNumber)
 
   response := struct {
-    isValid bool `json:"is_valid`
+    IsValid bool `json:"is_valid"`
   }{
     IsValid: isValid,
   }
