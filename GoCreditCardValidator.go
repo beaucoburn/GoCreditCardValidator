@@ -42,3 +42,16 @@ func validateHandler(w http.ResponseWriter, r *http.Request){
   w.Header().Set("Content-Type", "application/json")
   json.NewEncoder(w).Encode(response)
 }
+
+func luhnAlgorithm(cardNumber string) bool {
+  // Remove any spaces or dashes
+  cardNumber = strings.ReplaceAll(cardNumber, " ", "")
+  cardNumber = strings.ReplaceAll(cardNumber, "-", "")
+
+  // Check if the card number contains only digits
+  if _, err := strconv.Atoi(cardNumber); err != nil {
+    return false
+  }
+
+
+}
