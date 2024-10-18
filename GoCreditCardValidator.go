@@ -53,5 +53,22 @@ func luhnAlgorithm(cardNumber string) bool {
     return false
   }
 
+  sum := 0
+  isEven := true
 
+  for i := len(cardNumber) - 1; i >= 0; i-- {
+    digit, _ := strconv.Atoi(string(cardNumber[i]))
+
+    if isEven {
+      digit *= 2
+      if digit > 9 {
+        digit -= 9
+      }
+    }
+
+    sum += digit
+    isEven = !isEven
+  }
+
+  return sum%10 == 0
 }
