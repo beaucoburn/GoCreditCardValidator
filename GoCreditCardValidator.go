@@ -25,5 +25,20 @@ func validateHandler(w http.ResponseWriter, r *http.Request){
     CardNumber string `json:"card_number"`
   }
 
+  err := json.NewDecoder(r.Body).Decode(&request)
+  if err != nil {
+    http.Error(w, "Invalid request body", http.StatusBadRequest)
+    return
+  }
 
+  isValid := luhnAlgorithm(request.CardNumber)
+
+  response := struct {
+    isValid bool `json:"is_valid`
+  }{
+    IsValid: isValid,
+  }
+
+  w.Header().Set("Content-Type", "application/json")
+  json.NewEncoder(w).Encode(response)
 }
