@@ -44,31 +44,5 @@ func validateHandler(w http.ResponseWriter, r *http.Request){
 }
 
 func luhnAlgorithm(cardNumber string) bool {
-  // Remove any spaces or dashes
-  cardNumber = strings.ReplaceAll(cardNumber, " ", "")
-  cardNumber = strings.ReplaceAll(cardNumber, "-", "")
 
-  // Check if the card number contains only digits
-  if _, err := strconv.Atoi(cardNumber); err != nil {
-    return false
-  }
-
-  sum := 0
-  isEven := true
-
-  for i := len(cardNumber) - 1; i >= 0; i-- {
-    digit, _ := strconv.Atoi(string(cardNumber[i]))
-
-    if isEven {
-      digit *= 2
-      if digit > 9 {
-        digit -= 9
-      }
-    }
-
-    sum += digit
-    isEven = !isEven
-  }
-
-  return sum%10 == 0
 }
