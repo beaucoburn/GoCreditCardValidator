@@ -11,7 +11,7 @@ import (
 
 func main() {
   http.HandleFunc("/validate", validateHandler)
-  fmt.Println("Server is running on http://locahost:8080")
+  fmt.Println("Server is running on http://locahost:8081")
   log.Fatal(http.ListenAndServe(":8081", nil))
 }
 
