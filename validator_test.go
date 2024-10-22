@@ -24,5 +24,12 @@ func TestLuhnAlgorithm(t *testing.T) {
     {"With Dashes", "4532-0151-1283-0366", true},
   }
 
-
+  for _, tt := range tests {
+    t.Run(tt.name, func(t *testing.T) {
+      got := luhnAlgorithm(tt.cardNumber)
+      if got != tt.want {
+        t.Errorf("luhnAlgorithm(%s) = %v, want %v", tt.cardNumber, got, tt.want)
+      }
+    })
+  }
 }
