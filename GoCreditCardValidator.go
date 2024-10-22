@@ -77,4 +77,7 @@ func luhnAlgorithm(cardNumber string) bool {
   for _, digit := range digits {
     sum += digit
   }
+
+  // Check if sum is divisible by 10
+  return sum%10 == 0
 }
