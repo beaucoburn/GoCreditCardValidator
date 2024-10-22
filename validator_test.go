@@ -53,6 +53,18 @@ func TestValidateHandler(t *testing.T) {
       }{
         CardNumber: tt.cardNumber,
       }
+      bodyBytes, _ := json.Marshal(requestBody)
+
+      req := httptest.NewRequest(http.MethodPost, "/validate", bytes.NewBuffer(bodyBytes))
+      w := httptest.NewRecorder()
+
+      validateHandler(w, req)
+
+      if w.Code != tt.expectedStatus {
+        t.Errorf("Expected status %d, got %d", tt.expectedStatus, w.Code)
+      }
+
+
     })
   }
 }
