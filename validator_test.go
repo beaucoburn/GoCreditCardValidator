@@ -33,3 +33,18 @@ func TestLuhnAlgorithm(t *testing.T) {
     })
   }
 }
+
+func TestValidateHandler(t *testing.T) {
+  tests := []struct {
+    name string
+    cardNumber string
+    expectedStatus int
+    expectedValid bool
+  }{
+    {"Valid Card", "4532015112830366", http.StatusOK, true},
+    {"Invalid Card", "4532015112830367", http.StatusOK, false},
+    {"Invalid Format", "123abc456", http.StatusOK, false},
+  }
+
+
+}
