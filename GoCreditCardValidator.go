@@ -62,4 +62,13 @@ func luhnAlgorithm(cardNumber string) bool {
   for i, r := range cardNumber {
     digits[i] = int(r - '0')
   }
+
+  // Starting from the rightmost digit and moving left
+  for i := len(digits) - 2; i >= 0; i -= 2 {
+    doubled := digits[i] * 2
+    if doubled > 9 {
+      doubled = doubled - 9
+    }
+    digits[i] = doubled
+  }
 }
