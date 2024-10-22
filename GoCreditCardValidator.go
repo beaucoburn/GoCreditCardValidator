@@ -71,4 +71,10 @@ func luhnAlgorithm(cardNumber string) bool {
     }
     digits[i] = doubled
   }
+
+  // Sum all digits
+  sum := 0
+  for _, digit := range digits {
+    sum += digit
+  }
 }
