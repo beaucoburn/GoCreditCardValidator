@@ -44,5 +44,18 @@ func validateHandler(w http.ResponseWriter, r *http.Request){
 }
 
 func luhnAlgorithm(cardNumber string) bool {
+  // Remove any spaces or dashes
+  cardNumber = strings.Map(func(r rune) rune {
+    if unicode.IsDigit(r) {
+      return r
+    }
+    return -1
+  }, cardNumber)
 
+  // Check if the card number is empty or contains non-digits
+  if len(cardNumber) == 0 {
+    return false
+  }
+
+  // Convert string to slice of digits
 }
