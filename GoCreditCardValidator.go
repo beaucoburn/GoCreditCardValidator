@@ -12,7 +12,7 @@ import (
 func main() {
   http.HandleFunc("/validate", validateHandler)
   fmt.Println("Server is running on http://locahost:8080")
-  log.Fatal(http.ListenAndServe(":8080", nil))
+  log.Fatal(http.ListenAndServe(":8081", nil))
 }
 
 func validateHandler(w http.ResponseWriter, r *http.Request){
