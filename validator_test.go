@@ -64,7 +64,14 @@ func TestValidateHandler(t *testing.T) {
         t.Errorf("Expected status %d, got %d", tt.expectedStatus, w.Code)
       }
 
+      var response struct {
+        IsValid bool `json:"is_valid"`
+      }
+      json.NewDecoder(w.Body).Decode(&response)
 
+      if response.IsValid != tt.expectedValid {
+        t.Errorf("Expected validity %v, got %v", tt.expectedValid, response.IsValid)
+      }
     })
   }
 }
