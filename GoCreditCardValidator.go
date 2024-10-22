@@ -58,4 +58,8 @@ func luhnAlgorithm(cardNumber string) bool {
   }
 
   // Convert string to slice of digits
+  digits := make([]int, len(cardNumber))
+  for i, r := range cardNumber {
+    digits[i] = int(r - '0')
+  }
 }
